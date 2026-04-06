@@ -1,0 +1,190 @@
+{
+  "matches": [
+    {
+      "id": "1",
+      "fase": "Quartas de Final",
+      "jogador1": {
+        "id": 42,
+        "nickname": "KazuyaMaster99",
+        "personagem": "Kazuya"
+      },
+      "jogador2": {
+        "id": 15,
+        "nickname": "NinjaLee",
+        "personagem": "Law"
+      },
+      "vencedor": null,
+      "status": "aguardando"
+    },
+    {
+      "id": "2",
+      "fase": "Quartas de Final",
+      "jogador1": {
+        "id": 7,
+        "nickname": "JinKazamaBR",
+        "personagem": "Jin"
+      },
+      "jogador2": {
+        "id": 22,
+        "nickname": "IronFist_Girl",
+        "personagem": "Xiaoyu"
+      },
+      "vencedor": "JinKazamaBR",
+      "status": "finalizado"
+    },
+    {
+      "id": "3",
+      "fase": "Quartas de Final",
+      "jogador1": {
+        "id": 33,
+        "nickname": "KingOfRing",
+        "personagem": "King"
+      },
+      "jogador2": {
+        "id": 4,
+        "nickname": "FuryRoad",
+        "personagem": "Bryan"
+      },
+      "vencedor": null,
+      "status": "em_andamento"
+    },
+    {
+      "id": "4",
+      "fase": "Quartas de Final",
+      "jogador1": {
+        "id": 50,
+        "nickname": "HwoarangRider",
+        "personagem": "Hwoarang"
+      },
+      "jogador2": {
+        "id": 12,
+        "nickname": "ElectricWind",
+        "personagem": "Reina"
+      },
+      "vencedor": "ElectricWind",
+      "status": "finalizado"
+    },
+    {
+      "id": "5",
+      "fase": "Semifinal",
+      "jogador1": {
+        "id": 7,
+        "nickname": "JinKazamaBR",
+        "personagem": "Jin"
+      },
+      "jogador2": {
+        "id": 12,
+        "nickname": "ElectricWind",
+        "personagem": "Reina"
+      },
+      "vencedor": null,
+      "status": "aguardando"
+    },
+    {
+      "id": "6",
+      "fase": "Oitavas de Final",
+      "jogador1": {
+        "id": 88,
+        "nickname": "LuckyChlo3",
+        "personagem": "Lucky Chloe"
+      },
+      "jogador2": {
+        "id": 19,
+        "nickname": "DeathFist",
+        "personagem": "Paul Phoenix"
+      },
+      "vencedor": "DeathFist",
+      "status": "finalizado"
+    },
+    {
+      "id": "7",
+      "fase": "Oitavas de Final",
+      "jogador1": {
+        "id": 61,
+        "nickname": "ShadowRaven",
+        "personagem": "Raven"
+      },
+      "jogador2": {
+        "id": 5,
+        "nickname": "VictorC",
+        "personagem": "Victor"
+      },
+      "vencedor": null,
+      "status": "aguardando"
+    },
+    {
+      "id": "8",
+      "fase": "Repescagem",
+      "jogador1": {
+        "id": 25,
+        "nickname": "CoffeeQueen",
+        "personagem": "Azucena"
+      },
+      "jogador2": {
+        "id": 44,
+        "nickname": "TigerClaw",
+        "personagem": "Jack-8"
+      },
+      "vencedor": "CoffeeQueen",
+      "status": "finalizado"
+    },
+    {
+      "id": "9",
+      "fase": "Semifinal",
+      "jogador1": {
+        "id": 19,
+        "nickname": "DeathFist",
+        "personagem": "Paul Phoenix"
+      },
+      "jogador2": {
+        "id": 1,
+        "nickname": "KazuyaMaster99",
+        "personagem": "Kazuya"
+      },
+      "vencedor": null,
+      "status": "aguardando"
+    },
+    {
+      "id": "10",
+      "fase": "Final",
+      "jogador1": {
+        "id": 7,
+        "nickname": "JinKazamaBR",
+        "personagem": "Jin"
+      },
+      "jogador2": {
+        "id": 19,
+        "nickname": "DeathFist",
+        "personagem": "Paul Phoenix"
+      },
+      "vencedor": null,
+      "status": "aguardando"
+    },
+    {
+      "id": "11",
+      "fase": "Disputa de 3º Lugar",
+      "jogador1": {
+        "id": 12,
+        "nickname": "ElectricWind",
+        "personagem": "Reina"
+      },
+      "jogador2": {
+        "id": 1,
+        "nickname": "KazuyaMaster99",
+        "personagem": "Kazuya"
+      },
+      "vencedor": "ElectricWind",
+      "status": "finalizado"
+    }
+  ],
+  "players": [
+    {
+      "nome": "teste",
+      "nickname": "testet",
+      "personagem": "este",
+      "data_inscricao": "2026-03-21T21:35:51.428Z",
+      "id": "CeCOZkXt58o"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
