@@ -1,6 +1,5 @@
 import { Platform } from "react-native";
 
-// Tekken Tournament Dark Theme
 export const TekkenTheme = {
   // Core colors
   background: "#0A0A0F",
@@ -114,7 +113,6 @@ export const Shadows = {
   },
 };
 
-// Legacy support
 export const Colors = {
   light: {
     text: "#FFFFFF",
