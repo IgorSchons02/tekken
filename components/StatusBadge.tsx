@@ -22,6 +22,11 @@ const statusConfig: Record<string, { label: string; color: string; bg: string }>
     color: T.success,
     bg: T.success + "20",
   },
+  concluido: {
+    label: "Finalizado",
+    color: T.success,
+    bg: T.success + "20",
+  },
   default: {
     label: "Pendente",
     color: T.textMuted,

@@ -44,7 +44,7 @@ export interface Partida {
   jogador1: Jogador;
   jogador2: Jogador;
   vencedor: string | null;
-  status: "pendente" | "aguardando" | "em_andamento" | "finalizado";
+  status: "pendente" | "aguardando" | "em_andamento" | "finalizado" | "concluido";
 }
 
 export interface RankingEntry {
@@ -63,6 +63,14 @@ export interface TournamentStats {
   totalJogadores: number;
 }
 
+// ─── Health Check ───────────────────────────────────────
+
+export async function healthCheck(): Promise<{ hello: string }> {
+  const response = await fetch(`${BASE_URL}/`);
+  if (!response.ok) throw new Error("API fora do ar");
+  return response.json();
+}
+
 // ─── Personagens ─────────────────────────────────────────
 
 export async function fetchPersonagens(): Promise<Personagem[]> {
@@ -71,13 +79,28 @@ export async function fetchPersonagens(): Promise<Personagem[]> {
   return response.json();
 }
 
-export async function criarPersonagem(nome: string): Promise<Personagem> {
-  const response = await fetch(`${BASE_URL}/personagens`, {
+export async function criarPersonagensMultiplos(
+  nomes: string[]
+): Promise<Personagem[]> {
+  const response = await fetch(`${BASE_URL}/personagens-multiplos`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ nome }),
+    body: JSON.stringify(nomes.map((nome) => ({ nome }))),
   });
-  if (!response.ok) throw new Error("Erro ao criar personagem");
+  if (!response.ok) {
+    const text = await response.text().catch(() => "");
+    throw new Error(text || "Erro ao criar personagens");
+  }
+  return response.json();
+}
+
+export async function fetchPersonagensTorneio(
+  torneioId: number
+): Promise<Personagem[]> {
+  const response = await fetch(
+    `${BASE_URL}/torneios/${torneioId}/personagens`
+  );
+  if (!response.ok) throw new Error("Erro ao buscar personagens do torneio");
   return response.json();
 }
 
@@ -90,6 +113,17 @@ export async function criarParticipante(nome: string): Promise<Participante> {
     body: JSON.stringify({ nome }),
   });
   if (!response.ok) throw new Error("Erro ao criar participante");
+  return response.json();
+}
+
+export async function fetchParticipantesTorneio(
+  torneioId: number
+): Promise<Participante[]> {
+  const response = await fetch(
+    `${BASE_URL}/torneios/${torneioId}/participantes`
+  );
+  if (!response.ok)
+    throw new Error("Erro ao buscar participantes do torneio");
   return response.json();
 }
 
@@ -116,7 +150,7 @@ export async function criarTorneio(torneio: NovoTorneio): Promise<Torneio> {
 export async function gerarBracket(
   torneioId: number,
   participantes: BracketParticipante[]
-): Promise<Response> {
+): Promise<void> {
   const response = await fetch(
     `${BASE_URL}/torneios/${torneioId}/gerar-bracket`,
     {
@@ -129,13 +163,14 @@ export async function gerarBracket(
     const text = await response.text().catch(() => "");
     throw new Error(text || "Erro ao gerar bracket");
   }
-  return response;
 }
 
-// ─── Partidas (Matches) ──────────────────────────────────
+// ─── Partidas por Torneio ───────────────────────────────
 
-export async function fetchPartidas(): Promise<Partida[]> {
-  const response = await fetch(`${BASE_URL}/api/tournament/matches`);
+export async function fetchPartidas(torneioId: number): Promise<Partida[]> {
+  const response = await fetch(
+    `${BASE_URL}/torneios/${torneioId}/partidas`
+  );
   if (!response.ok) throw new Error("Erro ao buscar partidas");
   return response.json();
 }
@@ -145,7 +180,7 @@ export async function fetchPartidas(): Promise<Partida[]> {
 export async function atualizarVencedor(
   roundId: number,
   vencedorId: number
-): Promise<Response> {
+): Promise<void> {
   const response = await fetch(`${BASE_URL}/rounds/${roundId}/vencedor`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -155,7 +190,6 @@ export async function atualizarVencedor(
     const text = await response.text().catch(() => "");
     throw new Error(text || "Erro ao atualizar vencedor");
   }
-  return response;
 }
 
 // ─── Computed helpers ────────────────────────────────────
@@ -244,6 +278,7 @@ export function sortPartidas(partidas: Partida[]): Partida[] {
       pendente: 2,
       aguardando: 2,
       finalizado: 3,
+      concluido: 3,
     };
     return (ordemStatus[a.status] || 9) - (ordemStatus[b.status] || 9);
   });
